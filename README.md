@@ -1,4 +1,4 @@
-# Rspec::ExpectIt
+# RSpec::ExpectIt
 
 [![Build Status](https://travis-ci.org/thomasfedb/rspec-expect_it.png?branch=master)](https://travis-ci.org/thomasfedb/rspec-expect_it) [![Gem Version](https://badge.fury.io/rb/rspec-expect_it.png)](http://badge.fury.io/rb/rspec-expect_it)
 
