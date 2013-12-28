@@ -13,6 +13,14 @@ module RSpec
         expect(subject)
       end
 
+      def expect_its(method)
+        ExpectItsExpectationTarget.new(self, method)
+      end
+
+      def expect_its!(method)
+        expect(subject.send(method))
+      end
+
       def expect_it_safe
         if block_given?
           safe_lambda = lambda do
@@ -36,14 +44,6 @@ module RSpec
         end
 
         expect(result)
-      end
-
-      def expect_its(method)
-        ExpectItsExpectationTarget.new(self, method)
-      end
-
-      def expect_its!(method)
-        expect(subject.send(method))
       end
 
       class ExpectItExpectationTarget

@@ -47,7 +47,7 @@ If you want eager evaluation of the subject, use `expect_it!`.
 ```ruby
 subject { @value += 1 }
 
-specify { expect_it!.to eq(@value) }
+specify { expect_it!.to eq @value }
 ```
 
 ### expect_it{}
@@ -58,6 +58,28 @@ Calling `expect_it{}` is equivalent to `expect{subject}`.
 subject { @value += 1 }
 
 specify { expect_it{}.to change{@value}.by(1) }
+```
+
+### expect_its
+
+Calling `expect_its(:method)` is equivalent to `expect(subject.method)`.
+This is no `_safe` version of this helper.
+
+```ruby
+subject { "foobar" }
+
+specify { expect_its(:length).to eq 6 }
+```
+
+### expect_its!
+
+If you want eager evaluation of the subject, use `expect_its!`.
+This is no `_safe` version of this helper.
+
+```ruby
+subject { @value += 1 }
+
+specify { expect_its!(:to_s).to eq @value.to_s }
 ```
 
 ### expect_it_safe

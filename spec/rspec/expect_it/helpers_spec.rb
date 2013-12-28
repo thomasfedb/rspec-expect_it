@@ -19,7 +19,7 @@ describe RSpec::ExpectIt::Helpers do
     describe "unsaftey" do
       subject { raise Exception }
 
-      specify { expect{expect_it.to be nil}.to raise_error(Exception) }
+      specify { expect{ expect_it.to be nil }.to raise_error(Exception) }
     end
   end
 
@@ -59,6 +59,54 @@ describe RSpec::ExpectIt::Helpers do
       subject { raise Exception }
 
       specify { expect{ expect_it{}.to_not change{0} }.to raise_error(Exception) }
+    end
+  end
+
+  describe "expect_its" do
+    describe "equalivalence" do
+      let(:result) { Object.new }
+
+      subject { double("subject").tap {|s| s.stub(:method) { result } } }
+
+      specify { expect_its(:method).to eq subject.method }
+    end
+
+    describe "lazy evaluation" do
+      before { @value = 0 }
+
+      subject { double("subject").tap {|s| s.stub(:method) { @value = 1 } } }
+
+      specify { expect_its(:method).to eq (@value + 1) }
+    end 
+
+    describe "unsaftey" do
+      subject { double("subject").tap {|s| s.stub(:method) { raise Exception } } }
+
+      specify { expect{ expect_its(:method).to eq nil }.to raise_error(Exception) }
+    end
+  end
+
+  describe "expect_its!" do
+    describe "equalivalence" do
+      let(:result) { Object.new }
+
+      subject { double("subject").tap {|s| s.stub(:method) { result } } }
+
+      specify { expect_its!(:method).to eq subject.method }
+    end
+
+    describe "unlazy evaluation" do
+      before { @value = 0 }
+
+      subject { double("subject").tap {|s| s.stub(:method) { @value = 1 } } }
+
+      specify { expect_its!(:method).to eq @value }
+    end 
+
+    describe "unsaftey" do
+      subject { double("subject").tap {|s| s.stub(:method) { raise Exception } } }
+
+      specify { expect{ expect_its!(:method).to eq nil }.to raise_error(Exception) }
     end
   end
 
