@@ -38,14 +38,6 @@ module RSpec
         expect(result)
       end
 
-      def expect_its(method)
-        ExpectItsExpectationTarget.new(self, method)
-      end
-
-      def expect_its!(method)
-        expect(subject.send(method))
-      end
-
       class ExpectItExpectationTarget
         attr_accessor :context, :subject
 
@@ -78,21 +70,6 @@ module RSpec
           rescue Exception
             nil
           end
-        end
-      end
-
-      class ExpectItsExpectationTarget < ExpectItExpectationTarget
-        attr_accessor :method
-
-        def initialize(context, method)
-          super(context)
-          self.method = method
-        end
-
-        private
-
-        def get_subject
-          context.subject.send(method)
         end
       end
     end
