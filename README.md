@@ -1,5 +1,7 @@
 # Rspec::ExpectIt
 
+[![Build Status](https://travis-ci.org/thomasfedb/rspec-expect_it.png?branch=master)](https://travis-ci.org/thomasfedb/rspec-expect_it)
+
 Makes writing nice RSpec tests a little easier by providing expect_it helpers.
 
 Compatible with Ruby 1.9.2 and greater.
