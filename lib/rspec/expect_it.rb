@@ -1,7 +1,8 @@
-require "rspec/expect_it/version"
+require "rspec"
 
-module Rspec
-  module ExpectIt
-    # Your code goes here...
-  end
+require "rspec/expect_it/version"
+require "rspec/expect_it/helpers"
+
+RSpec.configure do |config|
+  config.include Rspec::ExpectIt::Helpers
 end
