@@ -1,6 +1,6 @@
 # Rspec::ExpectIt
 
-[![Build Status](https://travis-ci.org/thomasfedb/rspec-expect_it.png?branch=master)](https://travis-ci.org/thomasfedb/rspec-expect_it)
+[![Build Status](https://travis-ci.org/thomasfedb/rspec-expect_it.png?branch=master)](https://travis-ci.org/thomasfedb/rspec-expect_it) [![Gem Version](https://badge.fury.io/rb/rspec-expect_it.png)](http://badge.fury.io/rb/rspec-expect_it)
 
 Makes writing nice RSpec tests a little easier by providing expect_it helpers.
 
