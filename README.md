@@ -2,6 +2,8 @@
 
 Makes writing nice RSpec tests a little easier by providing expect_it helpers.
 
+Compatible with Ruby 1.9.2 and greater.
+
 ## Installation
 
 Add this line to your application's Gemfile:
