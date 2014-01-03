@@ -1,8 +1,11 @@
 # RSpec::ExpectIt
 
-[![Build Status](https://travis-ci.org/thomasfedb/rspec-expect_it.png?branch=master)](https://travis-ci.org/thomasfedb/rspec-expect_it) [![Gem Version](https://badge.fury.io/rb/rspec-expect_it.png)](http://badge.fury.io/rb/rspec-expect_it) [![Code Climate](https://codeclimate.com/github/thomasfedb/rspec-expect_it.png)](https://codeclimate.com/github/thomasfedb/rspec-expect_it)
+[![Build Status](https://travis-ci.org/thomasfedb/rspec-expect_it.png?branch=master)](https://travis-ci.org/thomasfedb/rspec-expect_it)
+[![Gem Version](https://badge.fury.io/rb/rspec-expect_it.png)](http://badge.fury.io/rb/rspec-expect_it)
+[![Code Climate](https://codeclimate.com/github/thomasfedb/rspec-expect_it.png)](https://codeclimate.com/github/thomasfedb/rspec-expect_it)
 
 Makes writing nice RSpec tests a little easier by providing expect_it helpers.
+These helpers are equivalent to `expect(subject)` and also provide useful variations.
 
 Compatible with Ruby 1.9.2 and greater.
 
@@ -63,7 +66,6 @@ specify { expect_it{}.to change{@value}.by(1) }
 ### expect_its
 
 Calling `expect_its(:method)` is equivalent to `expect(subject.method)`.
-There is no `_safe` version of this helper.
 
 ```ruby
 subject { "foobar" }
@@ -74,7 +76,6 @@ specify { expect_its(:length).to eq 6 }
 ### expect_its!
 
 If you want eager evaluation of the subject and method call, use `expect_its!`.
-There is no `_safe` version of this helper.
 
 ```ruby
 subject { @value += 1 }
@@ -82,32 +83,11 @@ subject { @value += 1 }
 specify { expect_its!(:to_s).to eq @value.to_s }
 ```
 
-### expect_it_safe
-
-The `expect_it_safe` helper is the same as `expect_it`, except that it will
-swallow any exceptions and return `nil`.
-
-```ruby
-subject { raise Exception }
-
-specify { expect_it_safe.to eq nil }
-```
-
-### expect_it_safe!
-
-The `expect_it_safe!` helper is the same as `expect_it!`, except that it will
-swallow any exceptions and return `nil`.
-
-```ruby
-subject { raise Exception }
-
-specify { expect_it_safe!.to eq nil }
-```
-
 ### expect_it_safe{}
 
 The `expect_it_safe{}` helper is the same as `expect_it{}`, except that it will
-swallow any exceptions and return `nil`.
+swallow any exceptions. This can be helpful when checking that error scenarios
+do not lead to changes that should only occur when the system is successful.
 
 ```ruby
 subject { raise Exception; @value = 12 }
