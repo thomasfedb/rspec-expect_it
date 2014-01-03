@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-group :development do
+group :tools do
   gem "guard"
   gem "guard-rspec"
   gem "byebug"
