@@ -111,46 +111,8 @@ describe RSpec::ExpectIt::Helpers do
   end
 
   describe "expect_it_safe" do
-    describe "equalivalence" do
-      subject { Object.new }
-
-      specify { expect_it_safe.to eq subject }
-    end
-
-    describe "lazy evaluation" do
-      before { @value = 0 }
-
-      subject { @value = 1 }
-
-      specify { expect_it_safe.to eq (@value + 1) }
-    end 
-
-    describe "saftey" do
-      subject { raise Exception }
-
-      specify { expect_it_safe.to eq nil }
-    end
-  end
-
-  describe "expect_it_safe!" do
-    describe "equalivalence" do
-      subject { Object.new }
-
-      specify { expect_it_safe!.to eq subject }
-    end
-
-    describe "unlazy evaluation" do
-      before { @value = 0 }
-
-      subject { @value = 1 }
-
-      specify { expect_it_safe!.to eq @value }
-    end 
-
-    describe "saftey" do
-      subject { raise Exception }
-
-      specify { expect_it_safe!.to eq nil }
+    describe "not avaliable" do
+      specify { expect{ expect_it_safe }.to raise_error(ArgumentError) }
     end
   end
 
