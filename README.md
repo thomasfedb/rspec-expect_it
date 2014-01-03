@@ -4,7 +4,7 @@
 [![Gem Version](https://badge.fury.io/rb/rspec-expect_it.png)](http://badge.fury.io/rb/rspec-expect_it)
 [![Code Climate](https://codeclimate.com/github/thomasfedb/rspec-expect_it.png)](https://codeclimate.com/github/thomasfedb/rspec-expect_it)
 
-Makes writing nice RSpec tests a little easier by providing expect_it helpers.
+Makes writing nice RSpec tests a little easier by providing `expect_it` helpers.
 These helpers are equivalent to `expect(subject)` and also provide useful variations.
 
 Compatible with Ruby 1.9.2 and greater.
