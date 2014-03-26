@@ -86,8 +86,8 @@ specify { expect_its!(:to_s).to eq @value.to_s }
 ### expect_it_safe{}
 
 The `expect_it_safe{}` helper is the same as `expect_it{}`, except that it will
-swallow any exceptions. This can be helpful when checking that error scenarios
-do not lead to changes that should only occur when the system is successful.
+swallow any exceptions raised in the subject (but not in matchers(. This can be
+helpful when testing failure scenarios.
 
 ```ruby
 subject { raise Exception; @value = 12 }
