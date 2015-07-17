@@ -1,28 +1,34 @@
+[![Gem Version](https://img.shields.io/gem/v/rspec-expect_it.svg?style=flat-square)](http://rubygems.org/gems/rspec-expect_it)
+[![Build Status](https://img.shields.io/travis/thomasfedb/rspec-expect_it.svg?style=flat-square)](https://travis-ci.org/thomasfedb/rspec-expect_it)
+[![Code Climate](https://img.shields.io/codeclimate/github/thomasfedb/rspec-expect_it.svg?style=flat-square)](https://codeclimate.com/github/thomasfedb/rspec-expect_it)
+
 # RSpec::ExpectIt
 
-[![Build Status](https://travis-ci.org/thomasfedb/rspec-expect_it.png?branch=master)](https://travis-ci.org/thomasfedb/rspec-expect_it)
-[![Gem Version](https://badge.fury.io/rb/rspec-expect_it.png)](http://rubygems.org/gems/rspec-expect_it)
-[![Code Climate](https://codeclimate.com/github/thomasfedb/rspec-expect_it.png)](https://codeclimate.com/github/thomasfedb/rspec-expect_it)
+Makes writing nice RSpec tests a little easier by providing a `expect_it` helper
+and a few helpful variations.
 
-Makes writing nice RSpec tests a little easier by providing `expect_it` helpers.
-These helpers are equivalent to `expect(subject)` and also provide useful variations.
-
-Compatible with Ruby 1.9.2 and greater.
+Compatible with:
+ - Ruby 1.9.3 and greater
+ - RSpec 3.0.0 and greater
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem "rspec-expect_it"
+```ruby
+gem "rspec-expect_it"
+```
 
 And then execute:
 
-    $ bundle
+```sh
+$ bundle
+```
 
 ## Usage
 
 ### expect_it
-The main feature is the `expect_it` helper, which is equivalent to `expect(subject)`.
+The main feature is the `expect_it` helper, which is equivalent to `expect(subject)` with lazy evaluation.
 
 ```ruby
 subject { "MyString" }
