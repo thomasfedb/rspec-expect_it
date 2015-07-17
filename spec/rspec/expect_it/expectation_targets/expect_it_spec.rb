@@ -3,8 +3,8 @@ require "spec_helper"
 describe RSpec::ExpectIt::ExpectationTargets::ExpectIt do
   let(:context) do
     double("context").tap do |context|
-      context.stub(:expect) {|arg| expect(arg) }
-      context.stub(:subject) { context_subject }
+      allow(context).to receive(:expect) {|arg| expect(arg) }
+      allow(context).to receive(:subject) { context_subject }
     end
   end
 

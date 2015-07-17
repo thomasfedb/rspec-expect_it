@@ -3,14 +3,14 @@ require "spec_helper"
 describe RSpec::ExpectIt::ExpectationTargets::ExpectIts do
   let(:context) do
     double("context").tap do |context|
-      context.stub(:expect) {|arg| expect(arg) }
-      context.stub(:subject) { context_subject }
+      allow(context).to receive(:expect) {|arg| expect(arg) }
+      allow(context).to receive(:subject) { context_subject }
     end
   end
 
   let(:context_subject) do
     double("subject").tap do |subject|
-      subject.stub(method) { method_return_value }
+      allow(subject).to receive(method) { method_return_value }
     end
   end
 

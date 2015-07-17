@@ -14,7 +14,7 @@ describe RSpec::ExpectIt::Helpers do
       subject { @value = 1 }
 
       specify { expect_it.to eq (@value + 1) }
-    end 
+    end
 
     describe "unsaftey" do
       subject { raise Exception }
@@ -36,7 +36,7 @@ describe RSpec::ExpectIt::Helpers do
       subject { @value = 1 }
 
       specify { expect_it!.to eq @value }
-    end 
+    end
 
     describe "unsaftey" do
       subject { raise Exception }
@@ -66,7 +66,7 @@ describe RSpec::ExpectIt::Helpers do
     describe "equalivalence" do
       let(:result) { Object.new }
 
-      subject { double("subject").tap {|s| s.stub(:method) { result } } }
+      subject { double("subject").tap {|s| allow(s).to receive(:method) { result } } }
 
       specify { expect_its(:method).to eq subject.method }
     end
@@ -74,13 +74,13 @@ describe RSpec::ExpectIt::Helpers do
     describe "lazy evaluation" do
       before { @value = 0 }
 
-      subject { double("subject").tap {|s| s.stub(:method) { @value = 1 } } }
+      subject { double("subject").tap {|s| allow(s).to receive(:method) { @value = 1 } } }
 
       specify { expect_its(:method).to eq (@value + 1) }
-    end 
+    end
 
     describe "unsaftey" do
-      subject { double("subject").tap {|s| s.stub(:method) { raise Exception } } }
+      subject { double("subject").tap {|s| allow(s).to receive(:method) { raise Exception } } }
 
       specify { expect{ expect_its(:method).to eq nil }.to raise_error(Exception) }
     end
@@ -90,7 +90,7 @@ describe RSpec::ExpectIt::Helpers do
     describe "equalivalence" do
       let(:result) { Object.new }
 
-      subject { double("subject").tap {|s| s.stub(:method) { result } } }
+      subject { double("subject").tap {|s| allow(s).to receive(:method) { result } } }
 
       specify { expect_its!(:method).to eq subject.method }
     end
@@ -98,13 +98,13 @@ describe RSpec::ExpectIt::Helpers do
     describe "unlazy evaluation" do
       before { @value = 0 }
 
-      subject { double("subject").tap {|s| s.stub(:method) { @value = 1 } } }
+      subject { double("subject").tap {|s| allow(s).to receive(:method) { @value = 1 } } }
 
       specify { expect_its!(:method).to eq @value }
-    end 
+    end
 
     describe "unsaftey" do
-      subject { double("subject").tap {|s| s.stub(:method) { raise Exception } } }
+      subject { double("subject").tap {|s| allow(s).to receive(:method) { raise Exception } } }
 
       specify { expect{ expect_its!(:method).to eq nil }.to raise_error(Exception) }
     end
