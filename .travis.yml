@@ -1,11 +1,22 @@
 language: ruby
+
+env:
+  global:
+    - TRAVIS_CI=1
+
 rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.5
   - 2.2.1
 
+gemfile:
+  - gemfiles/rspec_3.0.gemfile
+  - gemfiles/rspec_3.1.gemfile
+  - gemfiles/rspec_3.2.gemfile
+  - gemfiles/rspec_3.3.gemfile
+
 before_install: gem update bundler
 bundler_args: --without tools
 
-script: rspec
+script: bundle exec rspec -b
